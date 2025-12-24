@@ -10,7 +10,7 @@ npm start &
 }
 
 ############
-# BUild CKA Mock
+# Build CKA Mock
 ############
 docker build -t ekambaram/cka-mock:1.0 .
 docker push ekambaram/cka-mock:1.0
