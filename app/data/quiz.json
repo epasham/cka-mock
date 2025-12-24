@@ -1,0 +1,1202 @@
+[
+    {
+      "question": "Which tool or concept enforces policy-based governance in Kubernetes clusters?",
+      "choices": [
+        "Prometheus",
+        "Kyverno or Open Policy Agent (OPA)",
+        "Helm",
+        "Tekton"
+      ],
+      "correct": 1,
+      "section": "Platform Observability, Security, and Conformance",
+      "explanation": "Policy engines like OPA and Kyverno enforce security and configuration policies dynamically across clusters."
+    },
+    {
+      "question": "Which component exposes the Kubernetes API to clients?",
+      "choices": [
+        "kube-scheduler",
+        "kube-controller-manager",
+        "kube-apiserver",
+        "kubelet"
+      ],
+      "correct": 2,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kube-apiserver is the front end of the Kubernetes control plane that serves the API."
+    },
+    {
+      "question": "Where are static pod manifests located by default on kubeadm clusters?",
+      "choices": [
+        "/etc/kubernetes/manifests",
+        "/var/lib/kubelet/manifests",
+        "/etc/kube/manifests",
+        "/var/run/kubernetes/manifests"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kubelet watches /etc/kubernetes/manifests for static pod definitions."
+    },
+    {
+      "question": "Which runtime is standard for Kubernetes since dockershim removal?",
+      "choices": [
+        "Docker Engine",
+        "CRI-O",
+        "containerd",
+        "rkt"
+      ],
+      "correct": 2,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "containerd is widely used; dockershim was removed starting Kubernetes v1.24."
+    },
+    {
+      "question": "Which command shows the configured kubeconfig contexts?",
+      "choices": [
+        "kubectl config get-contexts",
+        "kubectl get contexts",
+        "kubectl get kubeconfig",
+        "kubectl show contexts"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kubectl config get-contexts lists contexts; use 'use-context' to switch."
+    },
+    {
+      "question": "Which kubectl command switches to a different kubeconfig context?",
+      "choices": [
+        "kubectl set-context <name>",
+        "kubectl use-context <name>",
+        "kubectl config use-context <name>",
+        "kubectl switch-context <name>"
+      ],
+      "correct": 2,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kubectl config use-context <name> switches the active context."
+    },
+    {
+      "question": "Where are kubeadm-managed certificates typically stored?",
+      "choices": [
+        "/etc/kubernetes/pki",
+        "/var/lib/kubelet/pki",
+        "/etc/ssl/kubernetes",
+        "/opt/kube/pki"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "Control-plane PKI (apiserver, etcd, etc.) resides under /etc/kubernetes/pki."
+    },
+    {
+      "question": "Which command checks certificate expiration on kubeadm clusters?",
+      "choices": [
+        "kubeadm certs check-expiration",
+        "kubectl get certs --expiry",
+        "openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text",
+        "kubeadm check certs"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kubeadm certs check-expiration prints expiry for control plane certs."
+    },
+    {
+      "question": "Which Kubernetes API group version is used for Deployments?",
+      "choices": [
+        "extensions/v1beta1",
+        "apps/v1",
+        "core/v1",
+        "batch/v1"
+      ],
+      "correct": 1,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "Deployments are in apps/v1; older extensions/v1beta1 is deprecated."
+    },
+    {
+      "question": "Which command shows cluster API resources and their versions?",
+      "choices": [
+        "kubectl api-resources",
+        "kubectl get apis",
+        "kubectl get resources",
+        "kubectl version --resources"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kubectl api-resources lists all resource kinds and API groups/versions."
+    },
+    {
+      "question": "Which command prints detailed API fields for a resource kind?",
+      "choices": [
+        "kubectl explain <resource>",
+        "kubectl describe <resource>",
+        "kubectl docs <resource>",
+        "kubectl fields <resource>"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "kubectl explain shows schema for resource fields and nested paths."
+    },
+    {
+      "question": "Which command displays the current context’s namespace?",
+      "choices": [
+        "kubectl config view --minify | grep namespace",
+        "kubectl get namespace current",
+        "kubectl namespace --current",
+        "kubectl config get-namespace"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "Using --minify shows active context; filter for 'namespace'."
+    },
+    {
+      "question": "Which command checks etcd health in an HA control plane with TLS?",
+      "choices": [
+        "etcdctl endpoint health",
+        "systemctl status etcd",
+        "kubectl get pods -n kube-system etcd",
+        "curl https://localhost:2379/health"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "Use ETCDCTL_API=3 etcdctl endpoint health with proper cert flags to verify health."
+    },
+    {
+      "question": "Which command displays cluster master and service endpoints?",
+      "choices": [
+        "kubectl cluster-info",
+        "kubectl get apiservers -A",
+        "kubectl get components -A",
+        "kubectl get services -n kube-system"
+      ],
+      "correct": 0,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "cluster-info shows control-plane and key service endpoints."
+    },
+    {
+      "question": "Which component stores Kubernetes cluster state?",
+      "choices": [
+        "kube-apiserver",
+        "etcd",
+        "kubelet",
+        "kube-controller-manager"
+      ],
+      "correct": 1,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "etcd is the key-value store holding persistent cluster state."
+    },
+    {
+      "question": "Which controller ensures a Pod is running on each node?",
+      "choices": [
+        "Deployment",
+        "StatefulSet",
+        "DaemonSet",
+        "Job"
+      ],
+      "correct": 2,
+      "section": "Workloads & Scheduling",
+      "explanation": "DaemonSets run a pod copy on every (or selected) node, useful for agents and log collectors."
+    },
+    {
+      "question": "Which command creates a Deployment named 'web' with image 'nginx:1.25'?",
+      "choices": [
+        "kubectl run web --image=nginx:1.25 --restart=Always",
+        "kubectl create deploy web --image=nginx:1.25",
+        "kubectl create deployment web --image=nginx:1.25",
+        "kubectl apply -f web.yaml"
+      ],
+      "correct": 2,
+      "section": "Workloads & Scheduling",
+      "explanation": "kubectl create deployment web --image=nginx:1.25 is the canonical command to create a Deployment."
+    },
+    {
+      "question": "Which command shows rollout status of a Deployment?",
+      "choices": [
+        "kubectl rollout status deployment/<name>",
+        "kubectl get deployment <name> -o wide",
+        "kubectl describe deployment <name>",
+        "kubectl scale deployment <name>"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "kubectl rollout status tracks the progress of Deployment updates."
+    },
+    {
+      "question": "Which probe determines when a Pod is ready to receive traffic?",
+      "choices": [
+        "livenessProbe",
+        "healthProbe",
+        "startupProbe",
+        "readinessProbe"
+      ],
+      "correct": 3,
+      "section": "Workloads & Scheduling",
+      "explanation": "readinessProbe gates Service endpoints until the container is ready."
+    },
+    {
+      "question": "Which resource enforces voluntary disruption limits during maintenance?",
+      "choices": [
+        "LimitRange",
+        "PodDisruptionBudget",
+        "ResourceQuota",
+        "PriorityClass"
+      ],
+      "correct": 1,
+      "section": "Workloads & Scheduling",
+      "explanation": "PodDisruptionBudget limits the number of pods that can be evicted at a time."
+    },
+    {
+      "question": "Which command schedules a pod to run on specific nodes using labels?",
+      "choices": [
+        "Use nodeSelector in Pod spec",
+        "Use tolerations in Pod spec",
+        "Use PodDisruptionBudget",
+        "Use PriorityClass"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "nodeSelector matches node labels to constrain scheduling."
+    },
+    {
+      "question": "Which scheduler feature offers more expressive node constraints than nodeSelector?",
+      "choices": [
+        "PodAffinity",
+        "NodeAffinity",
+        "ResourceQuota",
+        "LimitRange"
+      ],
+      "correct": 1,
+      "section": "Workloads & Scheduling",
+      "explanation": "NodeAffinity supports hard (required) and soft (preferred) placement rules."
+    },
+    {
+      "question": "Which taint effect immediately evicts pods that don’t tolerate it?",
+      "choices": [
+        "NoSchedule",
+        "PreferNoSchedule",
+        "NoExecute",
+        "ImmediateEvict"
+      ],
+      "correct": 2,
+      "section": "Workloads & Scheduling",
+      "explanation": "NoExecute evicts existing pods and prevents new pods unless they tolerate the taint."
+    },
+    {
+      "question": "Which command applies a taint to a node?",
+      "choices": [
+        "kubectl taint nodes <node> key=value:NoSchedule",
+        "kubectl label nodes <node> key=NoSchedule",
+        "kubectl cordon <node> --taint",
+        "kubectl set taint <node> key=value"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "kubectl taint nodes <node> key=value:Effect applies taints."
+    },
+    {
+      "question": "Which controller manages rolling updates and rollbacks for stateless workloads?",
+      "choices": [
+        "ReplicaSet",
+        "Deployment",
+        "StatefulSet",
+        "Job"
+      ],
+      "correct": 1,
+      "section": "Workloads & Scheduling",
+      "explanation": "Deployment orchestrates ReplicaSets to manage rolling updates and rollbacks."
+    },
+    {
+      "question": "Which feature adds a container to a running Pod for debugging?",
+      "choices": [
+        "InitContainers",
+        "Ephemeral Containers",
+        "Sidecars",
+        "Hook Containers"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "Ephemeral containers (kubectl debug) allow temporary debugging in a live Pod."
+    },
+    {
+      "question": "Which field controls graceful termination time for Pods?",
+      "choices": [
+        "spec.gracePeriodSeconds",
+        "spec.terminationGracePeriodSeconds",
+        "spec.killTimeoutSeconds",
+        "metadata.deletionGraceSeconds"
+      ],
+      "correct": 1,
+      "section": "Workloads & Scheduling",
+      "explanation": "spec.terminationGracePeriodSeconds specifies the time allowed for clean shutdown."
+    },
+    {
+      "question": "Which resource enables scheduled Jobs in Kubernetes?",
+      "choices": [
+        "Cron",
+        "CronJob",
+        "TimedJob",
+        "SchedulerJob"
+      ],
+      "correct": 1,
+      "section": "Workloads & Scheduling",
+      "explanation": "CronJob creates Jobs on a schedule using standard cron format."
+    },
+    {
+      "question": "Which controller is best for one-off tasks that should complete successfully?",
+      "choices": [
+        "Job",
+        "Deployment",
+        "DaemonSet",
+        "StatefulSet"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "Job runs pods to completion and manages retries."
+    },
+    {
+      "question": "How do you set an image on a deployment’s container via kubectl?",
+      "choices": [
+        "kubectl set image deployment/<name> <container>=<image>",
+        "kubectl patch deployment/<name> --image=<image>",
+        "kubectl create deployment <name> --image=<image>",
+        "kubectl rollout set image <name> <image>"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "kubectl set image applies container image updates declaratively."
+    },
+    {
+      "question": "Which command scales a Deployment to 5 replicas?",
+      "choices": [
+        "kubectl scale deploy/<name> --replicas=5",
+        "kubectl set replicas deploy/<name> 5",
+        "kubectl edit deploy/<name> --replicas=5",
+        "kubectl rollout scale deploy/<name> 5"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "kubectl scale changes the replicas count for the Deployment."
+    },
+    {
+      "question": "Which field sets the number of desired replicas in a Deployment?",
+      "choices": [
+        "spec.size",
+        "spec.replicas",
+        "spec.count",
+        "spec.desiredReplicas"
+      ],
+      "correct": 1,
+      "section": "Workloads & Scheduling",
+      "explanation": "spec.replicas controls the desired number of pods."
+    },
+    {
+      "question": "Which command labels a node so pods with matching nodeSelector can schedule there?",
+      "choices": [
+        "kubectl label nodes <node> disktype=ssd",
+        "kubectl taint nodes <node> disktype=ssd:NoSchedule",
+        "kubectl annotate nodes <node> disktype=ssd",
+        "kubectl set label <node> disktype=ssd"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "Labels are key-value metadata used by nodeSelector/affinity to constrain scheduling."
+    },
+    {
+      "question": "What is the default Service type created when none is specified?",
+      "choices": [
+        "NodePort",
+        "ClusterIP",
+        "LoadBalancer",
+        "ExternalName"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "By default, Services are ClusterIP, accessible only within the cluster network."
+    },
+    {
+      "question": "What is the default NodePort range in Kubernetes?",
+      "choices": [
+        "20000–29999",
+        "30000–32767",
+        "31000–31999",
+        "1024–65535"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "NodePort defaults to 30000–32767, configurable via kube-apiserver flag."
+    },
+    {
+      "question": "Which tool is required to use Ingress resources?",
+      "choices": [
+        "kube-proxy",
+        "Ingress Controller",
+        "CoreDNS",
+        "metrics-server"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "Ingress requires an Ingress Controller implementation (e.g., NGINX, HAProxy, Traefik)."
+    },
+    {
+      "question": "Which network policy effect denies all ingress by default?",
+      "choices": [
+        "A NetworkPolicy with empty podSelector and no ingress rules",
+        "A NetworkPolicy with egress rules only",
+        "A NetworkPolicy targeting all Pods with an empty ingress list",
+        "No NetworkPolicy configured"
+      ],
+      "correct": 2,
+      "section": "Services & Networking",
+      "explanation": "A policy selecting pods with an empty 'ingress' list creates default-deny ingress for those pods."
+    },
+    {
+      "question": "Which kube-proxy mode offers better performance and scalability?",
+      "choices": [
+        "userspace",
+        "iptables",
+        "ipvs",
+        "kernelspace"
+      ],
+      "correct": 2,
+      "section": "Services & Networking",
+      "explanation": "IPVS mode can handle more connections efficiently than iptables."
+    },
+    {
+      "question": "Which DNS add-on provides cluster DNS in modern Kubernetes?",
+      "choices": [
+        "kube-dns",
+        "CoreDNS",
+        "Bind9",
+        "dnsmasq"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "CoreDNS is the default DNS server in recent Kubernetes versions."
+    },
+    {
+      "question": "Which Kubernetes object provides a stable endpoint for a set of pods?",
+      "choices": [
+        "Endpoints",
+        "Service",
+        "Ingress",
+        "NetworkPolicy"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "Service abstracts pods and offers stable virtual IP (ClusterIP) and DNS name."
+    },
+    {
+      "question": "Which resource exposes a Service externally using cloud provider integration?",
+      "choices": [
+        "ClusterIP",
+        "NodePort",
+        "LoadBalancer",
+        "ExternalName"
+      ],
+      "correct": 2,
+      "section": "Services & Networking",
+      "explanation": "LoadBalancer leverages cloud provider to create external load balancer."
+    },
+    {
+      "question": "Which command shows the endpoints behind a Service?",
+      "choices": [
+        "kubectl get endpoints <service>",
+        "kubectl get svc <service> -o wide",
+        "kubectl get pods -l app=<service>",
+        "kubectl describe svc <service> --endpoints"
+      ],
+      "correct": 0,
+      "section": "Services & Networking",
+      "explanation": "Endpoints (and EndpointSlice) show actual pod IPs backing the Service."
+    },
+    {
+      "question": "Which API resource replaces Endpoints for scalability?",
+      "choices": [
+        "EndpointSlice",
+        "ServiceSlice",
+        "PodSlice",
+        "NodeSlice"
+      ],
+      "correct": 0,
+      "section": "Services & Networking",
+      "explanation": "EndpointSlice scales better for large services and multiple network topologies."
+    },
+    {
+      "question": "Which Ingress path type matches a path prefix?",
+      "choices": [
+        "Exact",
+        "Prefix",
+        "Regex",
+        "StartsWith"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "pathType: Prefix matches URL prefixes (e.g., /api)."
+    },
+    {
+      "question": "Which command creates a ClusterIP Service for a Deployment 'web' on port 80 to target 8080?",
+      "choices": [
+        "kubectl expose deploy web --port=80 --target-port=8080 --type=ClusterIP",
+        "kubectl create service web --port=80 --container-port=8080",
+        "kubectl service create web --port=80 --target-port=8080",
+        "kubectl expose service web --port=80 --target-port=8080"
+      ],
+      "correct": 0,
+      "section": "Services & Networking",
+      "explanation": "kubectl expose deploy creates a Service bound to the Deployment’s selector."
+    },
+    {
+      "question": "Which command lists all Services and their cluster IPs across namespaces?",
+      "choices": [
+        "kubectl get svc -A",
+        "kubectl get services -o wide",
+        "kubectl get svc --all",
+        "kubectl describe svc -A"
+      ],
+      "correct": 0,
+      "section": "Services & Networking",
+      "explanation": "kubectl get svc -A shows Services across namespaces."
+    },
+    {
+      "question": "Which default Service DNS name resolves inside a namespace?",
+      "choices": [
+        "service-name.svc.cluster.local",
+        "service-name.<namespace>.cluster.local",
+        "service-name.<namespace>.svc.cluster.local",
+        "service-name.svc"
+      ],
+      "correct": 2,
+      "section": "Services & Networking",
+      "explanation": "Full name format: svcName.namespace.svc.cluster.local."
+    },
+    {
+      "question": "Which command prints the YAML for a Service without creating it?",
+      "choices": [
+        "kubectl expose deploy web --port=80 --dry-run=client -o yaml",
+        "kubectl create service clusterip web --port=80 --dry-run=client -o yaml",
+        "Both A and B",
+        "kubectl apply -f service.yaml --dry-run=server"
+      ],
+      "correct": 2,
+      "section": "Services & Networking",
+      "explanation": "Both expose and create service can output YAML with --dry-run=client."
+    },
+    {
+      "question": "Which field represents the pod's DNS policy for name resolution?",
+      "choices": [
+        "dnsPolicy",
+        "dnsConfig",
+        "resolvePolicy",
+        "dnsServer"
+      ],
+      "correct": 0,
+      "section": "Services & Networking",
+      "explanation": "dnsPolicy controls how pods resolve DNS (e.g., ClusterFirst)."
+    },
+    {
+      "question": "Which Kubernetes API object holds pod-to-pod networking policies?",
+      "choices": [
+        "NetworkPolicy",
+        "Service",
+        "Ingress",
+        "EndpointSlice"
+      ],
+      "correct": 0,
+      "section": "Services & Networking",
+      "explanation": "NetworkPolicy defines allowed ingress/egress between pods and IP blocks."
+    },
+    {
+      "question": "Which object restricts pod egress traffic to specific destinations?",
+      "choices": [
+        "Service",
+        "NetworkPolicy",
+        "Ingress",
+        "ResourceQuota"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "NetworkPolicies can restrict both ingress and egress traffic."
+    },
+    {
+      "question": "Which command shows kube-proxy mode and configuration?",
+      "choices": [
+        "kubectl get configmap -n kube-system kube-proxy -o yaml",
+        "kubectl describe daemonset -n kube-system kube-proxy",
+        "kubectl logs -n kube-system ds/kube-proxy",
+        "All of the above"
+      ],
+      "correct": 3,
+      "section": "Services & Networking",
+      "explanation": "ConfigMap, DaemonSet description, and logs reveal mode (iptables/ipvs) and settings."
+    },
+    {
+      "question": "Which Service field forwards traffic to target containers?",
+      "choices": [
+        "port",
+        "targetPort",
+        "nodePort",
+        "selector"
+      ],
+      "correct": 1,
+      "section": "Services & Networking",
+      "explanation": "targetPort maps service port to container port; can be a number or named port."
+    },
+    {
+      "question": "Which storage object represents a piece of storage available to the cluster?",
+      "choices": [
+        "PersistentVolume",
+        "PersistentVolumeClaim",
+        "StorageClass",
+        "VolumeMount"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "PersistentVolume (PV) is a cluster resource that represents provisioned storage."
+    },
+    {
+      "question": "What does a StorageClass define?",
+      "choices": [
+        "A Pod's volume mount path",
+        "Dynamic provisioning parameters and reclaim policy",
+        "AccessModes for a PVC",
+        "Cluster DNS resolution policy"
+      ],
+      "correct": 1,
+      "section": "Storage",
+      "explanation": "StorageClass controls dynamic provisioning, parameters (provisioner), and reclaim policy."
+    },
+    {
+      "question": "Which access mode allows multiple nodes to write to a volume simultaneously?",
+      "choices": [
+        "ReadWriteOnce (RWO)",
+        "ReadOnlyMany (ROX)",
+        "ReadWriteMany (RWX)",
+        "ReadOnceMany (ROM)"
+      ],
+      "correct": 2,
+      "section": "Storage",
+      "explanation": "RWX allows read/write by many pods potentially across nodes; dependent on backend support."
+    },
+    {
+      "question": "Which Pod field mounts a volume into a container’s filesystem?",
+      "choices": [
+        "volumes",
+        "volumeDevices",
+        "volumeMounts",
+        "mounts"
+      ],
+      "correct": 2,
+      "section": "Storage",
+      "explanation": "Spec.containers[].volumeMounts attach defined volumes into container paths."
+    },
+    {
+      "question": "Which StorageClass reclaim policy retains the PV after PVC deletion?",
+      "choices": [
+        "Delete",
+        "Retain",
+        "Recycle",
+        "Preserve"
+      ],
+      "correct": 1,
+      "section": "Storage",
+      "explanation": "Retain keeps the underlying volume for manual reclamation."
+    },
+    {
+      "question": "Which object references a PVC for persistent data in a Pod?",
+      "choices": [
+        "volumes[].emptyDir",
+        "volumes[].persistentVolumeClaim",
+        "volumeMounts[].persistentVolumeClaim",
+        "storageClassName"
+      ],
+      "correct": 1,
+      "section": "Storage",
+      "explanation": "Use volumes[].persistentVolumeClaim with a claimName and mount via volumeMounts."
+    },
+    {
+      "question": "Which command lists all PVCs and their bound PVs?",
+      "choices": [
+        "kubectl get pvc",
+        "kubectl get pv -A",
+        "kubectl describe pvc",
+        "kubectl get pvc -o wide"
+      ],
+      "correct": 3,
+      "section": "Storage",
+      "explanation": "-o wide shows additional details; describe shows binding events per PVC."
+    },
+    {
+      "question": "Which field in StorageClass defines dynamic provisioner?",
+      "choices": [
+        "provisioner",
+        "storageProvider",
+        "driver",
+        "classProvider"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "provisioner identifies the CSI driver or in-tree provisioner for dynamic PV creation."
+    },
+    {
+      "question": "Which controller uses volumeClaimTemplates to create PVCs per pod replica?",
+      "choices": [
+        "Deployment",
+        "StatefulSet",
+        "ReplicaSet",
+        "DaemonSet"
+      ],
+      "correct": 1,
+      "section": "Storage",
+      "explanation": "StatefulSet creates individual PVCs per replica via volumeClaimTemplates."
+    },
+    {
+      "question": "Which field in Pod spec mounts host directories into containers (use cautiously)?",
+      "choices": [
+        "hostPath",
+        "emptyDir",
+        "persistentVolumeClaim",
+        "configMap"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "hostPath maps host filesystem paths; requires careful security considerations."
+    },
+    {
+      "question": "Which storage type provides temporary storage that is deleted when Pod is removed?",
+      "choices": [
+        "emptyDir",
+        "hostPath",
+        "PersistentVolume",
+        "NFS"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "emptyDir lives as long as the Pod; deleted when the Pod is removed."
+    },
+    {
+      "question": "Which field ensures files created by a container get a group ID applied on volumes?",
+      "choices": [
+        "securityContext.fsGroup",
+        "securityContext.runAsGroup",
+        "securityContext.supplementalGroups",
+        "volumeMounts.groupID"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "fsGroup sets the owning group for mounted volumes."
+    },
+    {
+      "question": "Which PersistentVolume phase indicates it is bound to a PVC?",
+      "choices": [
+        "Available",
+        "Bound",
+        "Released",
+        "Failed"
+      ],
+      "correct": 1,
+      "section": "Storage",
+      "explanation": "Bound means the PV is attached to a specific PVC."
+    },
+    {
+      "question": "Which StorageClass field allows resizing of dynamically provisioned volumes?",
+      "choices": [
+        "allowVolumeExpansion",
+        "expandable",
+        "resizeEnabled",
+        "dynamicResize"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "allowVolumeExpansion: true lets PVCs increase requested storage size."
+    },
+    {
+      "question": "Which binding mode defers PV binding until a Pod is scheduled?",
+      "choices": [
+        "Immediate",
+        "WaitForFirstConsumer",
+        "LateBinding",
+        "Deferred"
+      ],
+      "correct": 1,
+      "section": "Storage",
+      "explanation": "WaitForFirstConsumer avoids premature binding and improves topology-aware placement."
+    },
+    {
+      "question": "Which PVC field must be modified to expand the volume size?",
+      "choices": [
+        "spec.resources.requests.storage",
+        "spec.capacity.storage",
+        "spec.size",
+        "spec.volumeSize"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "Edit the PVC's requested storage; StorageClass must allow expansion."
+    },
+    {
+      "question": "Which volume mode exposes a raw block device to a container?",
+      "choices": [
+        "volumeMode: Block",
+        "volumeMode: Filesystem",
+        "accessMode: RWX",
+        "volumeDevices only"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "Block mode presents a device; Filesystem mode mounts a formatted FS."
+    },
+    {
+      "question": "Which field mounts a subdirectory of a volume inside a container?",
+      "choices": [
+        "volumeMounts[].subPath",
+        "volumes[].subPath",
+        "spec.subMount",
+        "mountOptions.subPath"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "subPath lets you mount a specific folder from the volume."
+    },
+    {
+      "question": "Which interface do CSI drivers implement to provision storage?",
+      "choices": [
+        "Container Storage Interface (CSI)",
+        "Container Runtime Interface (CRI)",
+        "Container Network Interface (CNI)",
+        "SR-IOV"
+      ],
+      "correct": 0,
+      "section": "Storage",
+      "explanation": "CSI standardizes volume plugins for Kubernetes and other orchestrators."
+    },
+    {
+      "question": "How do you check kubelet service logs on systemd-based nodes?",
+      "choices": [
+        "tail -f /var/log/kubelet.log",
+        "journalctl -u kubelet -f",
+        "kubectl logs kubelet",
+        "systemctl cat kubelet"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "journalctl -u kubelet shows kubelet logs on systemd systems."
+    },
+    {
+      "question": "Which command shows details of scheduling decisions for a Pod?",
+      "choices": [
+        "kubectl describe pod <name>",
+        "kubectl get pods -o wide",
+        "kubectl logs <pod>",
+        "kubectl get events --field-selector involvedObject.name=<name>"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "kubectl describe pod includes events and reasons for scheduling or failure."
+    },
+    {
+      "question": "Which command shows events across the cluster useful for troubleshooting?",
+      "choices": [
+        "kubectl get events --sort-by=.lastTimestamp",
+        "kubectl logs -A",
+        "kubectl describe nodes",
+        "kubectl top pods -A"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "Cluster-wide events provide context for scheduling failures and resource issues."
+    },
+    {
+      "question": "Which command drains a node while keeping DaemonSet pods?",
+      "choices": [
+        "kubectl drain <node> --ignore-daemonsets --delete-emptydir-data",
+        "kubectl drain <node> --delete-local-data",
+        "kubectl cordon <node> --ignore-daemonsets",
+        "kubectl taint nodes <node> key=value:NoExecute"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "Use --ignore-daemonsets and optionally --delete-emptydir-data for safe draining."
+    },
+    {
+      "question": "Which command displays cluster nodes' resource usage (CPU/memory)?",
+      "choices": [
+        "kubectl top nodes",
+        "kubectl get nodes -o usage",
+        "kubectl describe nodes",
+        "kubectl metrics nodes"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "kubectl top nodes requires metrics-server to provide usage statistics."
+    },
+    {
+      "question": "Which command shows a Pod’s logs for a specific container?",
+      "choices": [
+        "kubectl logs <pod>",
+        "kubectl logs <pod> -c <container>",
+        "kubectl describe <pod> --logs",
+        "kubectl get logs <pod> -c <container>"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "Use -c to specify the container in a multi-container Pod."
+    },
+    {
+      "question": "Which command quickly port-forwards to a Pod for local debugging?",
+      "choices": [
+        "kubectl proxy <pod>",
+        "kubectl port-forward pod/<name> 8080:80",
+        "kubectl tunnel pod/<name> 8080:80",
+        "kubectl connect pod/<name> --port 8080"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "kubectl port-forward maps local ports to Pod ports for testing."
+    },
+    {
+      "question": "How do you retrieve all pods across all namespaces?",
+      "choices": [
+        "kubectl get pods",
+        "kubectl get pods --all",
+        "kubectl get pods -A",
+        "kubectl get all pods"
+      ],
+      "correct": 2,
+      "section": "Troubleshooting",
+      "explanation": "-A (or --all-namespaces) lists resources across namespaces."
+    },
+    {
+      "question": "Which command shows pending pods with scheduling issues?",
+      "choices": [
+        "kubectl get pods --field-selector status.phase=Pending -A",
+        "kubectl top pods --pending",
+        "kubectl describe scheduler",
+        "kubectl get pending pods -A"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "Filter by phase=Pending and then 'describe' to see scheduling events."
+    },
+    {
+      "question": "Which command retrieves logs from a previous container instance after a crash?",
+      "choices": [
+        "kubectl logs <pod> -c <container> --previous",
+        "kubectl logs <pod> -c <container> --last",
+        "kubectl logs <pod> --restart=Never",
+        "kubectl logs <pod> --again"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "--previous fetches logs from the last terminated container instance."
+    },
+    {
+      "question": "Which command retrieves a Pod's YAML definition?",
+      "choices": [
+        "kubectl get pod <name> -o yaml",
+        "kubectl describe pod <name> -o yaml",
+        "kubectl yaml pod <name>",
+        "kubectl cat pod <name>"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "kubectl get -o yaml prints the full manifest as stored in the API server."
+    },
+    {
+      "question": "Which command shows the IP and node of pods for quick network checks?",
+      "choices": [
+        "kubectl get pods -o wide",
+        "kubectl describe pods | grep IP",
+        "kubectl get pods --ips",
+        "kubectl get pods -A --ips"
+      ],
+      "correct": 0,
+      "section": "Troubleshooting",
+      "explanation": "-o wide includes pod IP and node hostnames."
+    },
+    {
+      "question": "Which command edits a running resource manifest using the default editor?",
+      "choices": [
+        "kubectl patch <resource>",
+        "kubectl edit <kind>/<name>",
+        "kubectl apply -f <file>",
+        "kubectl replace -f <file>"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "kubectl edit opens the resource manifest to modify inline."
+    },
+    {
+      "question": "Which command lists nodes with their roles and conditions?",
+      "choices": [
+        "kubectl get nodes",
+        "kubectl describe nodes",
+        "kubectl get nodes -o wide",
+        "kubectl top nodes"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "kubectl describe nodes shows detailed conditions (Ready, DiskPressure, etc.) and labels."
+    },
+    {
+      "question": "Which feature provides cluster-level auditing of API requests?",
+      "choices": [
+        "RBAC",
+        "Audit Logging via kube-apiserver flags",
+        "Admission Webhooks",
+        "CoreDNS logs"
+      ],
+      "correct": 1,
+      "section": "Observability & Logging",
+      "explanation": "Enable audit via --audit-log-path, policies, and backends on kube-apiserver."
+    },
+    {
+      "question": "Which command shows the rollout history of a Deployment?",
+      "choices": [
+        "kubectl rollout history deployment/<name>",
+        "kubectl get rs -l app=<name>",
+        "kubectl logs deployment/<name>",
+        "kubectl get events -l app=<name>"
+      ],
+      "correct": 0,
+      "section": "Workloads & Scheduling",
+      "explanation": "Rollout history lists revisions and change-cause annotations."
+    },
+    {
+      "question": "Which command displays events for a specific namespace only?",
+      "choices": [
+        "kubectl get events",
+        "kubectl get events -n <ns>",
+        "kubectl get events -A | grep <ns>",
+        "kubectl get ns events"
+      ],
+      "correct": 1,
+      "section": "Troubleshooting",
+      "explanation": "Use -n <namespace> to constrain event listing."
+    },
+    {
+      "question": "Which admission controller enforces preset security levels (Privileged/Baseline/Restricted)?",
+      "choices": [
+        "PodSecurityPolicy (PSP)",
+        "PodSecurity Admission (PSA)",
+        "ValidatingAdmissionWebhook",
+        "NodeRestriction"
+      ],
+      "correct": 1,
+      "section": "Security",
+      "explanation": "PSA is the built-in admission mechanism replacing deprecated PSP."
+    },
+    {
+      "question": "Which object grants permissions within a specific namespace?",
+      "choices": [
+        "ClusterRoleBinding",
+        "ClusterRole",
+        "Role",
+        "ServiceAccount"
+      ],
+      "correct": 2,
+      "section": "Security",
+      "explanation": "Role defines namespace-scoped permissions; RoleBinding attaches them to subjects."
+    },
+    {
+      "question": "Which command binds a ClusterRole to a user across the cluster?",
+      "choices": [
+        "kubectl create rolebinding ...",
+        "kubectl create clusterrolebinding ...",
+        "kubectl apply -f rolebinding.yaml",
+        "kubectl auth bind clusterrole ..."
+      ],
+      "correct": 1,
+      "section": "Security",
+      "explanation": "ClusterRoleBinding associates a ClusterRole to subjects cluster-wide."
+    },
+    {
+      "question": "Which statement about Secrets is true?",
+      "choices": [
+        "Secrets are encrypted at rest by default",
+        "Secrets are base64-encoded and require additional configuration for encryption at rest",
+        "Secrets cannot be mounted as volumes",
+        "Secrets can only be used as environment variables"
+      ],
+      "correct": 1,
+      "section": "Security",
+      "explanation": "Secrets are base64-encoded; enable encryption at rest via kube-apiserver configuration."
+    },
+    {
+      "question": "Which field blocks root filesystem write in containers?",
+      "choices": [
+        "securityContext.readOnlyRootFilesystem: true",
+        "securityContext.runAsUser: 1000",
+        "securityContext.privileged: false",
+        "securityContext.allowPrivilegeEscalation: false"
+      ],
+      "correct": 0,
+      "section": "Security",
+      "explanation": "readOnlyRootFilesystem hardens containers by disallowing writes to the root FS."
+    },
+    {
+      "question": "Which field in Pod securityContext prevents privilege escalation?",
+      "choices": [
+        "allowPrivilegeEscalation: false",
+        "privileged: false",
+        "readOnlyRootFilesystem: true",
+        "runAsUser: 1000"
+      ],
+      "correct": 0,
+      "section": "Security",
+      "explanation": "allowPrivilegeEscalation: false blocks setuid binaries from elevating privileges."
+    },
+    {
+      "question": "Which field ensures a container runs as a non-root UID?",
+      "choices": [
+        "runAsNonRoot: true",
+        "runAsUser: 0",
+        "privileged: false",
+        "readOnlyRootFilesystem: true"
+      ],
+      "correct": 0,
+      "section": "Security",
+      "explanation": "runAsNonRoot enforces a non-root identity even if image USER is misconfigured."
+    },
+    {
+      "question": "Which feature lets you run containers with an alternative runtime like gVisor?",
+      "choices": [
+        "RuntimeClass",
+        "PriorityClass",
+        "PodSecurity",
+        "PodPreset"
+      ],
+      "correct": 0,
+      "section": "Security",
+      "explanation": "RuntimeClass selects a container runtime handler (e.g., gVisor) via CRI."
+    },
+    {
+      "question": "Which command displays RBAC permissions granted to the current user?",
+      "choices": [
+        "kubectl auth can-i --list",
+        "kubectl get rbac --list",
+        "kubectl get roles -A",
+        "kubectl describe user"
+      ],
+      "correct": 0,
+      "section": "Security",
+      "explanation": "kubectl auth can-i --list enumerates allowed actions for the current identity."
+    },
+    {
+      "question": "Which flag enables RBAC on the API server?",
+      "choices": [
+        "--authorization-mode=RBAC",
+        "--enable-rbac=true",
+        "--authz=rbac",
+        "--rbac-mode=on"
+      ],
+      "correct": 0,
+      "section": "Security",
+      "explanation": "Set kube-apiserver --authorization-mode=Node,RBAC to enable role-based access."
+    },
+    {
+      "question": "Which tool provides cluster add-on management and templating for Kubernetes apps?",
+      "choices": [
+        "Kustomize",
+        "Helm",
+        "Flux",
+        "Terraform"
+      ],
+      "correct": 1,
+      "section": "Cluster Architecture, Installation & Configuration",
+      "explanation": "Helm packages applications into charts to install, upgrade, and manage releases in Kubernetes."
+    }
+  ]
