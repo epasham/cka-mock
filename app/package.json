@@ -1,0 +1,12 @@
+{
+  "name": "cka-mock",
+  "version": "1.0.0",
+  "description": "Certified Kubernetes Administrator mock",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
